@@ -1,6 +1,9 @@
 local ScreenGui = Instance.new("ScreenGui")
 local ToggleUIButton = Instance.new("TextButton")
 local RemoveGraphicsButton = Instance.new("TextButton")
+local BlackScreen = Instance.new("Frame")
+local CreatorText = Instance.new("TextLabel")
+local LoadingText = Instance.new("TextLabel")
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.Name = "GraphicsControl"
@@ -15,6 +18,42 @@ RemoveGraphicsButton.Position = UDim2.new(0.5, -100, 0.5, -25)
 RemoveGraphicsButton.Text = "Remove All Graphics"
 RemoveGraphicsButton.Visible = false
 RemoveGraphicsButton.Parent = ScreenGui
+
+BlackScreen.Size = UDim2.new(1, 0, 1, 0)
+BlackScreen.BackgroundColor3 = Color3.new(0, 0, 0)
+BlackScreen.Parent = ScreenGui
+
+CreatorText.Size = UDim2.new(1, 0, 1, 0)
+CreatorText.Text = "เฟรนด์เป็นผู้สร้าง"
+CreatorText.TextSize = 50
+CreatorText.TextColor3 = Color3.new(0, 1, 0) -- Green color for hacker effect
+CreatorText.BackgroundTransparency = 1
+CreatorText.Font = Enum.Font.SourceSansBold
+CreatorText.TextStrokeTransparency = 0.5
+CreatorText.TextStrokeColor3 = Color3.new(0, 1, 0)
+CreatorText.Parent = BlackScreen
+
+LoadingText.Size = UDim2.new(1, 0, 0, 50)
+LoadingText.Position = UDim2.new(0, 0, 1, -50)
+LoadingText.Text = "กรุณารอ 10 วิ เพื่ออัพโหลดโปรแกรม"
+LoadingText.TextSize = 20
+LoadingText.TextColor3 = Color3.new(0, 1, 0)
+LoadingText.BackgroundTransparency = 1
+LoadingText.Font = Enum.Font.SourceSans
+LoadingText.TextStrokeTransparency = 0.5
+LoadingText.TextStrokeColor3 = Color3.new(0, 1, 0)
+LoadingText.Parent = BlackScreen
+
+task.spawn(function()
+    while BlackScreen.Parent do
+        CreatorText.TextTransparency = math.random(0, 15) / 100
+        LoadingText.TextTransparency = math.random(0, 15) / 100
+        task.wait(0.1)
+    end
+end)
+
+task.wait(10)
+BlackScreen:Destroy()
 
 local function removeGraphics()
     local Lighting = game:GetService("Lighting")
