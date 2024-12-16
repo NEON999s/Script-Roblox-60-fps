@@ -35,7 +35,7 @@ CreatorText.Parent = BlackScreen
 
 LoadingText.Size = UDim2.new(1, 0, 0, 50)
 LoadingText.Position = UDim2.new(0, 0, 1, -50)
-LoadingText.Text = "กรุณารอ 10 วิ เพื่ออัพโหลดโปรแกรม"
+LoadingText.Text = "กรุณารอ 2 วิ เพื่ออัพโหลดโปรแกรม"
 LoadingText.TextSize = 20
 LoadingText.TextColor3 = Color3.new(0, 1, 0)
 LoadingText.BackgroundTransparency = 1
@@ -52,7 +52,7 @@ task.spawn(function()
     end
 end)
 
-task.wait(10)
+task.wait(2)
 BlackScreen:Destroy()
 
 local function removeGraphics()
